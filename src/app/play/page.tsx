@@ -3,7 +3,7 @@
 import { useGameStore } from "@/store/gameStore";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Level1 } from "@/components/levels";
+import { Level1, Level2StageAndCommit } from "@/components/levels";
 import { t } from "@/lib/copy";
 
 function LevelRouter() {
@@ -12,6 +12,8 @@ function LevelRouter() {
   switch (currentLevel) {
     case "1":
       return <Level1 />;
+    case "2":
+      return <Level2StageAndCommit />;
     default:
       return (
         <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-8 text-center">
