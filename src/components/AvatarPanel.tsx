@@ -2,13 +2,30 @@
 
 import { useGameStore } from "@/store/gameStore";
 import { motion, AnimatePresence } from "framer-motion";
+import { t } from "@/lib/copy";
+import type { AvatarMood } from "@/store/gameStore";
 
 const MAX_VISIBLE_MESSAGES = 5;
 
+const MOOD_EMOJI: Record<AvatarMood, string> = {
+  idle: "🦊",
+  encouraging: "💪",
+  success: "✨",
+  celebrating: "🎉",
+  levelComplete: "🏆",
+};
+
+function getMoodMessage(mood: AvatarMood): string {
+  return t(`avatar.mood.${mood}`);
+}
+
 export function AvatarPanel() {
   const avatarMessages = useGameStore((s) => s.avatarMessages);
+  const avatarMood = useGameStore((s) => s.avatarMood);
 
   const visibleMessages = avatarMessages.slice(-MAX_VISIBLE_MESSAGES);
+  const moodMessage = getMoodMessage(avatarMood);
+  const isCelebrating = avatarMood === "celebrating" || avatarMood === "levelComplete";
 
   return (
     <section
@@ -17,21 +34,33 @@ export function AvatarPanel() {
     >
       <div className="px-4 py-3 border-b border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800">
         <div className="flex items-center gap-2">
-          <div
-            className="w-8 h-8 rounded-full bg-amber-400 dark:bg-amber-500 flex items-center justify-center text-lg"
+          <motion.div
+            key={avatarMood}
+            initial={{ scale: 0.8, opacity: 0.8 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className={`w-10 h-10 rounded-full flex items-center justify-center text-2xl ${
+              isCelebrating
+                ? "bg-amber-400 dark:bg-amber-500"
+                : "bg-slate-200 dark:bg-slate-600"
+            }`}
             aria-hidden
           >
-            🦊
+            {MOOD_EMOJI[avatarMood]}
+          </motion.div>
+          <div>
+            <span className="font-medium text-slate-800 dark:text-slate-200 block">
+              {t("avatar.title")}
+            </span>
+            <span className="text-xs text-slate-500 dark:text-slate-400">
+              {moodMessage}
+            </span>
           </div>
-          <span className="font-medium text-slate-800 dark:text-slate-200">
-            Git Guide
-          </span>
         </div>
       </div>
       <div className="p-4 min-h-[120px] flex flex-col justify-end">
         {visibleMessages.length === 0 ? (
           <p className="text-slate-500 dark:text-slate-400 text-sm italic">
-            Waiting for instructions…
+            {t("avatar.waiting")}
           </p>
         ) : (
           <ul className="space-y-2">
