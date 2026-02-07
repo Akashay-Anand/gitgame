@@ -36,6 +36,13 @@ export interface AvatarMessage {
   timestamp?: number;
 }
 
+export type AvatarMood = "idle" | "encouraging" | "success" | "celebrating" | "levelComplete";
+
+export interface BadgeProgress {
+  id: string;
+  unlockedAt: number;
+}
+
 export interface GameState {
   /** Current level id (e.g. "1", "2") */
   currentLevel: LevelId;
@@ -45,7 +52,16 @@ export interface GameState {
   repository: RepositoryState;
   /** Messages from the in-game avatar / guide */
   avatarMessages: AvatarMessage[];
+  /** Player XP (earned from completing quests) */
+  xp: number;
+  /** Unlocked badges */
+  badges: BadgeProgress[];
+  /** Avatar emotional state for UI feedback */
+  avatarMood: AvatarMood;
 }
+
+export const XP_PER_QUEST = 100;
+const BADGE_FIRST_STEPS = "first_steps";
 
 export interface GameActions {
   setLevel: (levelId: LevelId) => void;
@@ -55,6 +71,9 @@ export interface GameActions {
   initRepository: (path?: string) => void;
   addAvatarMessage: (message: Omit<AvatarMessage, "id" | "timestamp">) => void;
   clearAvatarMessages: () => void;
+  setAvatarMood: (mood: AvatarMood) => void;
+  grantXp: (amount: number) => void;
+  unlockBadge: (id: string) => void;
   resetProgress: () => void;
 }
 
@@ -72,6 +91,9 @@ const initialState: GameState = {
   completedLevels: {},
   repository: { ...defaultRepoState },
   avatarMessages: [],
+  xp: 0,
+  badges: [],
+  avatarMood: "idle",
 };
 
 const STORAGE_KEY = "gitquest-progress";
@@ -85,13 +107,23 @@ export const useGameStore = create<GameState & GameActions>()(
         set((state) => ({ ...state, currentLevel: levelId })),
 
       markLevelComplete: (levelId) =>
-        set((state) => ({
-          ...state,
-          completedLevels: {
+        set((state) => {
+          const completedLevels = {
             ...state.completedLevels,
             [levelId]: true,
-          },
-        })),
+          };
+          const xp = state.xp + XP_PER_QUEST;
+          const badges = state.badges.some((b) => b.id === BADGE_FIRST_STEPS)
+            ? state.badges
+            : [...state.badges, { id: BADGE_FIRST_STEPS, unlockedAt: Date.now() }];
+          return {
+            ...state,
+            completedLevels,
+            xp,
+            badges,
+            avatarMood: "celebrating" as const,
+          };
+        }),
 
       setRepository: (repo) =>
         set((state) => ({
@@ -131,10 +163,27 @@ export const useGameStore = create<GameState & GameActions>()(
 
       clearAvatarMessages: () => set((state) => ({ ...state, avatarMessages: [] })),
 
+      setAvatarMood: (avatarMood) => set((state) => ({ ...state, avatarMood })),
+
+      grantXp: (amount) =>
+        set((state) => ({ ...state, xp: state.xp + amount })),
+
+      unlockBadge: (id) =>
+        set((state) => {
+          if (state.badges.some((b) => b.id === id)) return state;
+          return {
+            ...state,
+            badges: [...state.badges, { id, unlockedAt: Date.now() }],
+          };
+        }),
+
       resetProgress: () =>
         set({
           ...initialState,
           repository: { ...defaultRepoState },
+          xp: 0,
+          badges: [],
+          avatarMood: "idle",
         }),
     }),
     {
@@ -144,6 +193,8 @@ export const useGameStore = create<GameState & GameActions>()(
         currentLevel: state.currentLevel,
         completedLevels: state.completedLevels,
         repository: state.repository,
+        xp: state.xp,
+        badges: state.badges,
       }),
     }
   )
