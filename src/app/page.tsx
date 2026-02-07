@@ -2,10 +2,11 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { t } from "@/lib/copy";
+import { useT } from "@/lib/copy";
 import { useGameStore } from "@/store/gameStore";
 
 export default function HomePage() {
+  const t = useT();
   const xp = useGameStore((s) => s.xp);
   const badges = useGameStore((s) => s.badges);
 

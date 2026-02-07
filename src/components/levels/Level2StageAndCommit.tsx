@@ -7,7 +7,7 @@ import { AvatarPanel } from "@/components/AvatarPanel";
 import { RepoStatePanel } from "@/components/RepoStatePanel";
 import { QuestPanel } from "@/components/QuestPanel";
 import { QuestCompleteOverlay } from "@/components/QuestCompleteOverlay";
-import { t } from "@/lib/copy";
+import { useT } from "@/lib/copy";
 import { XP_PER_QUEST } from "@/store/gameStore";
 import type { WorkingDirectoryFile } from "@/store/gameStore";
 
@@ -18,6 +18,7 @@ const DEFAULT_WORKING_FILES: WorkingDirectoryFile[] = [
 ];
 
 export function Level2StageAndCommit() {
+  const t = useT();
   const repository = useGameStore((s) => s.repository);
   const stageFile = useGameStore((s) => s.stageFile);
   const unstageFile = useGameStore((s) => s.unstageFile);

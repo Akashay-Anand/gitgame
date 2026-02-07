@@ -2,7 +2,7 @@
 
 import { useGameStore } from "@/store/gameStore";
 import { motion, AnimatePresence } from "framer-motion";
-import { t } from "@/lib/copy";
+import { useT } from "@/lib/copy";
 import type { AvatarMood } from "@/store/gameStore";
 
 const MAX_VISIBLE_MESSAGES = 5;
@@ -15,16 +15,17 @@ const MOOD_EMOJI: Record<AvatarMood, string> = {
   levelComplete: "🏆",
 };
 
-function getMoodMessage(mood: AvatarMood): string {
+function getMoodMessage(mood: AvatarMood, t: (key: string) => string): string {
   return t(`avatar.mood.${mood}`);
 }
 
 export function AvatarPanel() {
+  const t = useT();
   const avatarMessages = useGameStore((s) => s.avatarMessages);
   const avatarMood = useGameStore((s) => s.avatarMood);
 
   const visibleMessages = avatarMessages.slice(-MAX_VISIBLE_MESSAGES);
-  const moodMessage = getMoodMessage(avatarMood);
+  const moodMessage = getMoodMessage(avatarMood, t);
   const isCelebrating = avatarMood === "celebrating" || avatarMood === "levelComplete";
 
   return (

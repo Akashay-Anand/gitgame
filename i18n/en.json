@@ -9,7 +9,9 @@
   },
   "nav": {
     "back": "← Home",
-    "level": "Level"
+    "level": "Level",
+    "home": "Home",
+    "play": "Play"
   },
   "play": {
     "title": "GitQuest"
@@ -23,12 +25,22 @@
     "notStarted": "Not started",
     "done": "Done",
     "play": "Play",
-    "completed": "Completed"
+    "completed": "Completed",
+    "currentLocation": "Current location",
+    "levelTier": "Level {tier}"
   },
   "levelList": {
     "one": "Quest 1: First Repository",
     "two": "Quest 2: Stage Your Changes",
     "three": "Quest 3: Your First Commit"
+  },
+  "levelMap": {
+    "one": "git init",
+    "two": "git add & commit",
+    "three": "Branching",
+    "starterCottage": "The Starter Cottage",
+    "neonForest": "Stage & Commit",
+    "branching": "Branching Paths"
   },
   "quest": {
     "level1": {
