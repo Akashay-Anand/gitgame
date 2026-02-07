@@ -43,13 +43,21 @@ npm run lint  # Run ESLint
 
 Progress is persisted to `localStorage` under the key `gitquest-progress` (current level and completed levels). Avatar messages are not persisted.
 
-## i18n (future)
+## i18n (Lingo.dev)
 
-- `src/lib/i18n.ts` – placeholder and `t()` helper for **Lingo.dev** integration.
-- Use translation keys in the store and UI; swap in Lingo when ready.
+- **Source of truth**: `i18n/en.json` (English). Lingo.dev translates into `i18n/hi.json` (and other targets in `i18n.json`).
+- **Runtime**: `src/lib/copy.ts` exposes `t(key)` and loads messages from `i18n/[locale].json`; `src/lib/i18n.ts` defines `getLocale()` and supported locales (`en`, `hi`).
+- **CI**: On every push to `main`, the [Lingo.dev GitHub Action](.github/workflows/i18n.yml) runs and opens a **translation PR** with updated `i18n/*.json` and `i18n.lock`.
+
+**Setup (one-time):**
+
+1. **Repository secret**: In GitHub → **Settings → Secrets and variables → Actions**, add a secret named `LINGODOTDEV_API_KEY` with your [Lingo.dev](https://www.lingo.dev) API key.
+2. **Allow Actions to create PRs**: In **Settings → Actions → General**, enable **Allow GitHub Actions to create and approve pull requests**, then save.
+
+After that, merging any feature PR (or any change) to `main` will trigger the workflow and Lingo will open a PR like “feat: update translations via @LingoDotDev” for you to merge.
 
 ## Next steps
 
 1. Implement **Level 1** gameplay in `src/app/play/page.tsx` and/or `src/components/levels/`.
-2. Connect **Lingo.dev** in `src/lib/i18n.ts` and replace `t()` with the SDK.
+2. Add a language switcher and wire it to `getLocale()` (e.g. cookie or URL) so users can switch to Hindi.
 3. Add more levels and route them from the levels page.

@@ -1,6 +1,7 @@
 /**
- * Centralized copy for GitQuest (English).
- * All user-facing text lives here for i18n readiness.
+ * Reference copy for GitQuest (English).
+ * Source of truth for translations is i18n/en.json (Lingo.dev bucket).
+ * Add new keys there; this file is for reference / key structure only.
  * Keys are dot-path strings, e.g. "quest.level1.title"
  */
 export const en = {

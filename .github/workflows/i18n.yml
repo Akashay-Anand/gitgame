@@ -18,3 +18,10 @@ jobs:
       - uses: lingodotdev/lingo.dev@main
         with:
           api-key: ${{ secrets.LINGODOTDEV_API_KEY }}
+          # Create a PR with translation updates instead of committing to main
+          pull-request: true
+          # Avoid re-running on commits made by this action (e.g. when translation PR is merged)
+          process-own-commits: false
+        env:
+          # Required for the action to create the translation PR
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
