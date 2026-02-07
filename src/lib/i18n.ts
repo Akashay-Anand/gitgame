@@ -1,23 +1,51 @@
 /**
- * Locale and getLocale for Lingo.dev i18n.
- * Translation strings live in i18n/[locale].json; copy.ts uses getLocale() to pick the right file.
+ * Single place for i18n config. To add a language:
+ * 1. Add a row to LOCALES below
+ * 2. Add: import <code>Messages from "../../i18n/<code>.json"
+ * 3. Add <code>: <code>Messages to the messages object
  * @see https://www.lingo.dev
  */
 
-export type Locale = "en" | "hi";
+import enMessages from "../../i18n/en.json";
+import hiMessages from "../../i18n/hi.json";
 
+export const LOCALES = [
+  { code: "en" as const, label: "English" },
+  { code: "hi" as const, label: "हिन्दी" },
+] as const;
+
+export type Locale = (typeof LOCALES)[number]["code"];
+export const localeCodes = LOCALES.map((l) => l.code);
 export const defaultLocale: Locale = "en";
 
-export const supportedLocales: Locale[] = ["en", "hi"];
+// Message bundles: add new locale import + entry here when adding a language
+type NestedValue = string | { [key: string]: NestedValue };
+const messages: Record<Locale, NestedValue> = {
+  en: enMessages as NestedValue,
+  hi: hiMessages as NestedValue,
+};
 
-/** Translation key type for type-safe i18n */
-export type TranslationKey = string;
+function get(obj: NestedValue, path: string): string | undefined {
+  const keys = path.split(".");
+  let current: NestedValue = obj;
+  for (const key of keys) {
+    if (current == null || typeof current !== "object") return undefined;
+    current = (current as Record<string, NestedValue>)[key];
+  }
+  return typeof current === "string" ? current : undefined;
+}
 
-/**
- * Current locale. Defaults to "en"; can later be driven by URL, cookie, or Lingo context.
- */
-export function getLocale(): Locale {
-  if (typeof window === "undefined") return defaultLocale;
-  // TODO: read from cookie, searchParams, or Lingo context when adding language switcher
-  return defaultLocale;
+/** Get message for a locale; falls back to English if missing. */
+export function getMessage(
+  key: string,
+  locale: Locale,
+  params?: Record<string, string | number>
+): string {
+  const value =
+    get(messages[locale], key) ?? get(messages.en, key) ?? key;
+  if (!params) return value;
+  return Object.entries(params).reduce(
+    (acc, [k, v]) => acc.replace(new RegExp(`\\{${k}\\}`, "g"), String(v)),
+    value
+  );
 }

@@ -2,9 +2,10 @@
 
 import { useGameStore } from "@/store/gameStore";
 import { motion } from "framer-motion";
-import { t } from "@/lib/copy";
+import { useT } from "@/lib/copy";
 
 export function RepoStatePanel() {
+  const t = useT();
   const repository = useGameStore((s) => s.repository);
 
   const initialized = repository.initialized ?? false;

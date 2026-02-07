@@ -1,12 +1,12 @@
 "use client";
 
-import { useGameStore } from "@/store/gameStore";
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { Level1, Level2StageAndCommit } from "@/components/levels";
-import { t } from "@/lib/copy";
+import { motion } from "framer-motion";
+import { useGameStore } from "@/store/gameStore";
+import { useT } from "@/lib/copy";
+import { Level1, Level2StageAndCommit, LevelUnavailable } from "@/components/levels";
 
-function LevelRouter() {
+function PlayContent() {
   const currentLevel = useGameStore((s) => s.currentLevel);
 
   switch (currentLevel) {
@@ -15,23 +15,12 @@ function LevelRouter() {
     case "2":
       return <Level2StageAndCommit />;
     default:
-      return (
-        <div className="rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 p-8 text-center">
-          <p className="text-slate-600 dark:text-slate-400 mb-4">
-            {t("levels.levelUnavailable", { level: currentLevel })}
-          </p>
-          <Link
-            href="/levels"
-            className="text-slate-900 dark:text-white font-medium underline hover:no-underline"
-          >
-            {t("levels.viewAvailableLevels")}
-          </Link>
-        </div>
-      );
+      return <LevelUnavailable levelId={currentLevel} />;
   }
 }
 
 export default function PlayPage() {
+  const t = useT();
   const currentLevel = useGameStore((s) => s.currentLevel);
   const xp = useGameStore((s) => s.xp);
 
@@ -64,7 +53,7 @@ export default function PlayPage() {
           </Link>
         </div>
 
-        <LevelRouter />
+        <PlayContent />
       </motion.div>
     </main>
   );

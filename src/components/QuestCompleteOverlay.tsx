@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { t } from "@/lib/copy";
+import { useT } from "@/lib/copy";
 
 interface QuestCompleteOverlayProps {
   show: boolean;
@@ -10,6 +10,7 @@ interface QuestCompleteOverlayProps {
 }
 
 export function QuestCompleteOverlay({ show, xpEarned, onDismiss }: QuestCompleteOverlayProps) {
+  const t = useT();
   return (
     <AnimatePresence>
       {show && (

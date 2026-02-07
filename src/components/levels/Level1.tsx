@@ -7,12 +7,13 @@ import { AvatarPanel } from "@/components/AvatarPanel";
 import { RepoStatePanel } from "@/components/RepoStatePanel";
 import { QuestPanel } from "@/components/QuestPanel";
 import { QuestCompleteOverlay } from "@/components/QuestCompleteOverlay";
-import { t } from "@/lib/copy";
+import { useT } from "@/lib/copy";
 import { XP_PER_QUEST } from "@/store/gameStore";
 
 const LEVEL_ID = "1";
 
 export function Level1() {
+  const t = useT();
   const initRepository = useGameStore((s) => s.initRepository);
   const addAvatarMessage = useGameStore((s) => s.addAvatarMessage);
   const setAvatarMood = useGameStore((s) => s.setAvatarMood);

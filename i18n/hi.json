@@ -1,74 +1,86 @@
 {
   "app": {
-    "name": "GitQuest",
-    "tagline": "Learn Git by playing. Level by level."
+    "name": "GitQuest हिंदी",
+    "tagline": "खेलते हुए Git सीखें। स्तर दर स्तर।"
   },
   "home": {
-    "startPlaying": "Start playing",
-    "viewLevels": "View levels"
+    "startPlaying": "खेल शुरू करें",
+    "viewLevels": "स्तर देखें"
   },
   "nav": {
-    "back": "← Home",
-    "level": "Level"
+    "back": "← होम",
+    "level": "स्तर",
+    "home": "होम",
+    "play": "खेलें"
   },
   "play": {
     "title": "GitQuest"
   },
   "levels": {
-    "title": "Levels",
-    "description": "Complete quests to earn XP and unlock new levels.",
-    "levelUnavailable": "Level {level} is not available yet.",
-    "viewAvailableLevels": "View available levels",
-    "locked": "Locked",
-    "notStarted": "Not started",
-    "done": "Done",
-    "play": "Play",
-    "completed": "Completed"
+    "title": "स्तर",
+    "description": "XP कमाने और नए स्तर अनलॉक करने के लिए क्वेस्ट पूरे करें।",
+    "levelUnavailable": "स्तर {level} अभी उपलब्ध नहीं है।",
+    "viewAvailableLevels": "उपलब्ध स्तर देखें",
+    "locked": "लॉक्ड",
+    "notStarted": "शुरू नहीं हुआ",
+    "done": "पूरा हुआ",
+    "play": "खेलें",
+    "completed": "पूर्ण",
+    "currentLocation": "वर्तमान स्थान",
+    "levelTier": "स्तर {tier}"
   },
   "levelList": {
-    "one": "Quest 1: First Repository",
-    "two": "Quest 2: Stage Your Changes",
-    "three": "Quest 3: Your First Commit"
+    "one": "क्वेस्ट 1: पहला रिपॉजिटरी",
+    "two": "क्वेस्ट 2: अपने बदलाव स्टेज करें",
+    "three": "क्वेस्ट 3: आपका पहला कमिट"
+  },
+  "levelMap": {
+    "one": "git init",
+    "two": "git add & commit",
+    "three": "ब्रांचिंग",
+    "starterCottage": "स्टार्टर कॉटेज",
+    "neonForest": "स्टेज और कमिट",
+    "branching": "ब्रांचिंग पथ"
   },
   "quest": {
     "level1": {
-      "title": "Quest 1: First Repository",
-      "subtitle": "Initialize a repository",
-      "hint": "Use git init to turn this folder into a Git repository.",
-      "objectiveInit": "Initialize the repository",
-      "buttonInit": "Run git init",
-      "buttonAlreadyInit": "Already initialized",
-      "questComplete": "Quest complete",
-      "welcome": "Welcome! Your first task is to create a new Git repository. Run git init to initialize one in this folder.",
-      "success": "Nice! You've initialized a repository. Git created a .git folder and set up the default branch \"main\". Quest complete!",
-      "already": "This folder is already a Git repository. You've completed this quest!"
+      "title": "क्वेस्ट 1: पहला रिपॉजिटरी",
+      "subtitle": "रिपॉजिटरी इनिशियलाइज़ करें",
+      "hint": "इस फ़ोल्डर को Git रिपॉजिटरी बनाने के लिए git init का उपयोग करें।",
+      "objectiveInit": "रिपॉजिटरी इनिशियलाइज़ करें",
+      "buttonInit": "git init चलाएँ",
+      "buttonAlreadyInit": "पहले से इनिशियलाइज़ है",
+      "questComplete": "क्वेस्ट पूरा हुआ",
+      "welcome": "स्वागत है! आपका पहला काम एक नई Git रिपॉजिटरी बनाना है। इस फ़ोल्डर में git init चलाएँ।",
+      "success": "शानदार! आपने रिपॉजिटरी इनिशियलाइज़ कर ली है। Git ने .git फ़ोल्डर बनाया और डिफ़ॉल्ट ब्रांच \"main\" सेट की। क्वेस्ट पूरा!",
+      "already": "यह फ़ोल्डर पहले से ही एक Git रिपॉजिटरी है। आपने यह क्वेस्ट पूरा कर लिया है!"
     }
   },
   "avatar": {
-    "title": "Git Guide",
-    "waiting": "Waiting for instructions…",
+    "title": "Git गाइड",
+    "waiting": "निर्देशों का इंतज़ार है…",
     "mood": {
-      "idle": "I'm here when you need me. Try the objective above!",
-      "encouraging": "You've got this! Follow the quest steps.",
-      "success": "Nice work! Keep going.",
-      "celebrating": "Amazing! Quest complete!",
-      "levelComplete": "You did it! Quest complete."
+      "idle": "मैं यहाँ हूँ। ऊपर दिए गए लक्ष्य को आज़माएँ!",
+      "encouraging": "आप कर सकते हैं! क्वेस्ट के स्टेप्स फ़ॉलो करें।",
+      "success": "अच्छा काम! आगे बढ़ते रहें।",
+      "celebrating": "कमाल! क्वेस्ट पूरा हुआ!",
+      "levelComplete": "आपने कर दिखाया! क्वेस्ट पूरा हुआ।"
     }
   },
   "repo": {
-    "title": "Repository",
-    "branches": "Branches",
-    "commits": "Commits",
-    "staged": "Staged",
-    "notAGitRepo": "Not a git repository (no .git directory)",
-    "noCommitsYet": "(no commits yet)",
-    "currentBranch": "current branch"
+    "title": "रिपॉजिटरी",
+    "branches": "ब्रांचेस",
+    "commits": "कमिट्स",
+    "staged": "स्टेज्ड",
+    "notAGitRepo": "Git रिपॉजिटरी नहीं है (.git डायरेक्टरी मौजूद नहीं)",
+    "noCommitsYet": "(अभी तक कोई कमिट नहीं)",
+    "currentBranch": "वर्तमान ब्रांच"
   },
   "progression": {
     "xp": "XP",
     "xpEarned": "+{amount} XP",
-    "badges": "Badges",
-    "firstSteps": "First Steps",
-    "firstStepsDesc": "Complete your first quest"
+    "badges": "बैज",
+    "firstSteps": "पहले कदम",
+    "firstStepsDesc": "अपना पहला क्वेस्ट पूरा करें"
   }
 }

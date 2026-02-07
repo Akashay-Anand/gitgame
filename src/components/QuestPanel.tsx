@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { t } from "@/lib/copy";
+import { useT } from "@/lib/copy";
 
 export interface QuestObjective {
   id: string;
@@ -27,6 +27,7 @@ export function QuestPanel({
   allComplete,
   showComplete = false,
 }: QuestPanelProps) {
+  const t = useT();
   return (
     <motion.section
       layout
