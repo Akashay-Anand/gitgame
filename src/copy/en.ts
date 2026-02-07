@@ -30,11 +30,20 @@ export const en = {
     done: "Done",
     play: "Play",
     completed: "Completed",
+    currentLocation: "Current Location",
   },
   levelList: {
     one: "Quest 1: First Repository",
     two: "Quest 2: Stage Your Changes",
     three: "Quest 3: Your First Commit",
+  },
+  levelMap: {
+    one: "git init",
+    two: "git add & commit",
+    three: "Branching",
+    starterCottage: "The Starter Cottage",
+    neonForest: "Stage & Commit",
+    branching: "Branching Paths",
   },
   quest: {
     level1: {
@@ -48,6 +57,22 @@ export const en = {
       welcome: "Welcome! Your first task is to create a new Git repository. Run git init to initialize one in this folder.",
       success: "Nice! You've initialized a repository. Git created a .git folder and set up the default branch \"main\". Quest complete!",
       already: "This folder is already a Git repository. You've completed this quest!",
+    },
+    level2: {
+      title: "Quest 2: Stage & Commit",
+      subtitle: "Stage changes and create your first commit",
+      hint: "Use git add to stage files, then git commit -m \"message\" to save them to history.",
+      objectiveStage: "Stage the modified file(s)",
+      objectiveCommit: "Create a commit with a message",
+      buttonStage: "Stage",
+      buttonUnstage: "Unstage",
+      buttonCommit: "Commit",
+      commitPlaceholder: "Commit message…",
+      questComplete: "Quest complete",
+      welcome: "Your repo has a modified file. Stage it with git add, then create a commit with git commit -m \"your message\".",
+      staged: "File staged! Now add a commit message and click Commit.",
+      success: "Your first commit is in the history. You've learned the basic Git workflow!",
+      already: "You've already completed this quest. Great work!",
     },
   },
   avatar: {
@@ -64,11 +89,14 @@ export const en = {
   repo: {
     title: "Repository",
     branches: "Branches",
+    workingDir: "Working directory",
     commits: "Commits",
     staged: "Staged",
     notAGitRepo: "Not a git repository (no .git directory)",
     noCommitsYet: "(no commits yet)",
     currentBranch: "current branch",
+    modified: "modified",
+    untracked: "untracked",
   },
   progression: {
     xp: "XP",

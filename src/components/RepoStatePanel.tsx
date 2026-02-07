@@ -9,6 +9,7 @@ export function RepoStatePanel() {
 
   const initialized = repository.initialized ?? false;
   const branches = repository.branches ?? [];
+  const workingDirectory = repository.workingDirectory ?? [];
   const commits = repository.commits ?? [];
   const stagedFiles = repository.stagedFiles ?? [];
 
@@ -87,6 +88,37 @@ export function RepoStatePanel() {
                 ))}
               </ul>
             </div>
+            {workingDirectory.length > 0 && (
+              <div>
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
+                  {t("repo.workingDir")}
+                </h4>
+                <ul className="space-y-1">
+                  {workingDirectory.map((f) => (
+                    <li key={f.name} className="flex items-center gap-2 text-slate-600 dark:text-slate-300">
+                      <span className="text-amber-600 dark:text-amber-400 text-xs">
+                        {f.status === "modified" ? t("repo.modified") : t("repo.untracked")}
+                      </span>
+                      <span>{f.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            {stagedFiles.length > 0 && (
+              <div>
+                <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
+                  {t("repo.staged")}
+                </h4>
+                <ul className="space-y-1">
+                  {stagedFiles.map((f) => (
+                    <li key={f} className="text-slate-600 dark:text-slate-300">
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
             <div>
               <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
                 {t("repo.commits")}
@@ -111,23 +143,6 @@ export function RepoStatePanel() {
                 </ul>
               )}
             </div>
-            {stagedFiles.length > 0 && (
-              <div>
-                <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
-                  {t("repo.staged")}
-                </h4>
-                <ul className="space-y-1">
-                  {stagedFiles.map((f) => (
-                    <li
-                      key={f}
-                      className="text-slate-600 dark:text-slate-300"
-                    >
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </motion.div>
         )}
       </div>

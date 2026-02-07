@@ -8,9 +8,20 @@ export interface GitBranch {
   isHead: boolean;
 }
 
+export type WorkingDirectoryFileStatus = "modified" | "untracked";
+
+export interface WorkingDirectoryFile {
+  name: string;
+  status: WorkingDirectoryFileStatus;
+}
+
 export interface GitCommit {
   id: string;
   message: string;
+  /** Files included in this commit (optional for backward compatibility) */
+  files?: string[];
+  /** Parent commit id (if any) */
+  parentId?: string;
 }
 
 export interface RepositoryState {
@@ -24,8 +35,10 @@ export interface RepositoryState {
   branches: GitBranch[];
   /** Commit history (empty after init) */
   commits: GitCommit[];
-  /** Staged file paths (for future git add / commit levels) */
+  /** Staged file paths (git add) */
   stagedFiles: string[];
+  /** Working directory: files with change status (modified, untracked) */
+  workingDirectory: WorkingDirectoryFile[];
 }
 
 export interface AvatarMessage {
@@ -69,6 +82,14 @@ export interface GameActions {
   setRepository: (repo: Partial<RepositoryState>) => void;
   /** Level 1: initialize repository (git init) */
   initRepository: (path?: string) => void;
+  /** Stage a file (git add) */
+  stageFile: (path: string) => void;
+  /** Unstage a file */
+  unstageFile: (path: string) => void;
+  /** Create a commit from staged files (git commit) */
+  commit: (message: string) => void;
+  /** Seed working directory for Level 2 (modified/untracked files) */
+  setWorkingDirectory: (files: WorkingDirectoryFile[]) => void;
   addAvatarMessage: (message: Omit<AvatarMessage, "id" | "timestamp">) => void;
   clearAvatarMessages: () => void;
   setAvatarMood: (mood: AvatarMood) => void;
@@ -84,6 +105,7 @@ const defaultRepoState: RepositoryState = {
   branches: [],
   commits: [],
   stagedFiles: [],
+  workingDirectory: [],
 };
 
 const initialState: GameState = {
@@ -144,9 +166,69 @@ export const useGameStore = create<GameState & GameActions>()(
               branches: [{ name: "main", isHead: true }],
               commits: [],
               stagedFiles: [],
+              workingDirectory: state.repository.workingDirectory ?? [],
             },
           };
         }),
+
+      stageFile: (path) =>
+        set((state) => {
+          const repo = state.repository;
+          const workingDir = repo.workingDirectory ?? [];
+          if (repo.stagedFiles.includes(path)) return state;
+          if (!workingDir.some((f) => f.name === path)) return state;
+          return {
+            ...state,
+            repository: {
+              ...repo,
+              stagedFiles: [...repo.stagedFiles, path],
+            },
+          };
+        }),
+
+      unstageFile: (path) =>
+        set((state) => ({
+          ...state,
+          repository: {
+            ...state.repository,
+            stagedFiles: state.repository.stagedFiles.filter((p) => p !== path),
+          },
+        })),
+
+      commit: (message) =>
+        set((state) => {
+          const repo = state.repository;
+          if (repo.stagedFiles.length === 0) return state;
+          const headCommit = repo.commits?.[repo.commits.length - 1];
+          const id = `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`;
+          const newCommit: GitCommit = {
+            id,
+            message,
+            files: [...repo.stagedFiles],
+            parentId: headCommit?.id ?? undefined,
+          };
+          const workingDir = (repo.workingDirectory ?? []).filter(
+            (f) => !repo.stagedFiles.includes(f.name)
+          );
+          return {
+            ...state,
+            repository: {
+              ...repo,
+              commits: [...(repo.commits ?? []), newCommit],
+              stagedFiles: [],
+              workingDirectory: workingDir,
+            },
+          };
+        }),
+
+      setWorkingDirectory: (files) =>
+        set((state) => ({
+          ...state,
+          repository: {
+            ...state.repository,
+            workingDirectory: files,
+          },
+        })),
 
       addAvatarMessage: (message) =>
         set((state) => ({
