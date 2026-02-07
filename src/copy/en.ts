@@ -29,11 +29,20 @@ export const en = {
     done: "Done",
     play: "Play",
     completed: "Completed",
+    currentLocation: "Current Location",
   },
   levelList: {
     one: "Quest 1: First Repository",
     two: "Quest 2: Stage Your Changes",
     three: "Quest 3: Your First Commit",
+  },
+  levelMap: {
+    one: "git init",
+    two: "git add & commit",
+    three: "Branching",
+    starterCottage: "The Starter Cottage",
+    neonForest: "Stage & Commit",
+    branching: "Branching Paths",
   },
   quest: {
     level1: {

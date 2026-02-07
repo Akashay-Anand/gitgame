@@ -24,3 +24,42 @@ body {
     text-wrap: balance;
   }
 }
+
+/* World map (levels page) */
+.starfield {
+  background-image: radial-gradient(
+    circle at 2px 2px,
+    rgba(255, 255, 255, 0.15) 1px,
+    transparent 0
+  );
+  background-size: 40px 40px;
+}
+.circuit-line {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #258cf4 50%,
+    transparent 100%
+  );
+  box-shadow: 0 0 15px #258cf4;
+}
+.circuit-line-locked {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #3b4754 50%,
+    transparent 100%
+  );
+}
+.nebula {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(37, 140, 244, 0.1) 0%,
+    transparent 70%
+  );
+}
+.arcade-text {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "@/styles/globals.css";
 import { Providers } from "@/components/Providers";
 
@@ -10,6 +10,11 @@ const inter = Inter({
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
+  subsets: ["latin"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-display",
   subsets: ["latin"],
 });
 
@@ -25,8 +30,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+          rel="stylesheet"
+        />
+      </head>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased font-sans min-h-screen`}
+        className={`${inter.variable} ${jetbrainsMono.variable} ${spaceGrotesk.variable} antialiased font-sans min-h-screen`}
       >
         <Providers>{children}</Providers>
       </body>
