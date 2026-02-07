@@ -9,7 +9,9 @@
   },
   "nav": {
     "back": "← Accueil",
-    "level": "Niveau"
+    "level": "Niveau",
+    "home": "Accueil",
+    "play": "Jouer"
   },
   "play": {
     "title": "GitQuest"
@@ -23,12 +25,22 @@
     "notStarted": "Non commencé",
     "done": "Terminé",
     "play": "Jouer",
-    "completed": "Complété"
+    "completed": "Complété",
+    "currentLocation": "Emplacement actuel",
+    "levelTier": "Niveau {tier}"
   },
   "levelList": {
     "one": "Quête 1 : premier dépôt",
     "two": "Quête 2 : indexez vos modifications",
     "three": "Quête 3 : votre premier commit"
+  },
+  "levelMap": {
+    "one": "git init",
+    "two": "git add & commit",
+    "three": "Branching",
+    "starterCottage": "La cabane du débutant",
+    "neonForest": "Stage & Commit",
+    "branching": "Chemins de branchement"
   },
   "quest": {
     "level1": {

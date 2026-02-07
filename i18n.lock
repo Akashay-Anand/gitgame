@@ -7,6 +7,8 @@ checksums:
     home/viewLevels: 60ab29a557b648344d942aa1718c5f80
     nav/back: b4baf5c93a54294a885ee39650bc188d
     nav/level: 1e3bf31d5c6083e898dd3e3359fbb0c2
+    nav/home: 104a3db3b671c04e167eafbe21e57881
+    nav/play: 027e225503c43b6e9cc9698e70c2736a
     play/title: de5ba54c66f0d3e5dc5d1fc64caac2e9
     levels/title: 6ebb315bb8a698031e93849b6f46bd11
     levels/description: 190881ba7de9d787271ea4283e2f057e
@@ -17,9 +19,17 @@ checksums:
     levels/done: ffd408fa29d5bc9039ef8ea1b9b699bb
     levels/play: 027e225503c43b6e9cc9698e70c2736a
     levels/completed: 0e4bbce9985f25eb673d9a054c8d5334
+    levels/currentLocation: 0324e18c989bda6aa8a1dbbbb8184d11
+    levels/levelTier: 765424b99b1bcbaf2dd9c81611aed196
     levelList/one: 64b05837c884201010092004b52d69d3
     levelList/two: 4bd29cd1c1a72916c5483835df6c4aad
     levelList/three: 97a140ae7ab02ba24ef4de0d1e7e1b30
+    levelMap/one: 8197b6cf8fcfcf9d5d0a70326ed7dfbc
+    levelMap/two: 76360e08d0f4fe5defbd508da65fd106
+    levelMap/three: af38ef7708988f354b17247b76dd8d6a
+    levelMap/starterCottage: 947347fdb6bea9b8629ef0241bd18944
+    levelMap/neonForest: 584c85b2a2a9887611b23c1d81c69cdd
+    levelMap/branching: 465fa5b5cdcb19a3d2d315728c1eaa48
     quest/level1/title: 64b05837c884201010092004b52d69d3
     quest/level1/subtitle: 1fedeca9d24b2ff809f73a23c8c00285
     quest/level1/hint: 202c47400c851c35eb26b80864871d26
