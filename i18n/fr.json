@@ -1,0 +1,74 @@
+{
+  "app": {
+    "name": "GitQuest",
+    "tagline": "Apprenez Git en jouant. Niveau par niveau."
+  },
+  "home": {
+    "startPlaying": "Commencer à jouer",
+    "viewLevels": "Voir les niveaux"
+  },
+  "nav": {
+    "back": "← Accueil",
+    "level": "Niveau"
+  },
+  "play": {
+    "title": "GitQuest"
+  },
+  "levels": {
+    "title": "Niveaux",
+    "description": "Complétez des quêtes pour gagner de l'XP et débloquer de nouveaux niveaux.",
+    "levelUnavailable": "Le niveau {level} n'est pas encore disponible.",
+    "viewAvailableLevels": "Voir les niveaux disponibles",
+    "locked": "Verrouillé",
+    "notStarted": "Non commencé",
+    "done": "Terminé",
+    "play": "Jouer",
+    "completed": "Complété"
+  },
+  "levelList": {
+    "one": "Quête 1 : premier dépôt",
+    "two": "Quête 2 : indexez vos modifications",
+    "three": "Quête 3 : votre premier commit"
+  },
+  "quest": {
+    "level1": {
+      "title": "Quête 1 : premier dépôt",
+      "subtitle": "Initialisez un dépôt",
+      "hint": "Utilisez git init pour transformer ce dossier en dépôt Git.",
+      "objectiveInit": "Initialisez le dépôt",
+      "buttonInit": "Exécuter git init",
+      "buttonAlreadyInit": "Déjà initialisé",
+      "questComplete": "Quête terminée",
+      "welcome": "Bienvenue ! Votre première tâche consiste à créer un nouveau dépôt Git. Exécutez git init pour en initialiser un dans ce dossier.",
+      "success": "Bravo ! Vous avez initialisé un dépôt. Git a créé un dossier .git et configuré la branche par défaut \"main\". Quête terminée !",
+      "already": "Ce dossier est déjà un dépôt Git. Vous avez terminé cette quête !"
+    }
+  },
+  "avatar": {
+    "title": "Guide Git",
+    "waiting": "En attente d'instructions…",
+    "mood": {
+      "idle": "Je suis là quand vous avez besoin de moi. Essayez l'objectif ci-dessus !",
+      "encouraging": "Vous pouvez le faire ! Suivez les étapes de la quête.",
+      "success": "Bon travail ! Continuez.",
+      "celebrating": "Incroyable ! Quête terminée !",
+      "levelComplete": "Vous avez réussi ! Quête terminée."
+    }
+  },
+  "repo": {
+    "title": "Dépôt",
+    "branches": "Branches",
+    "commits": "Commits",
+    "staged": "Indexé",
+    "notAGitRepo": "Pas un dépôt git (aucun répertoire .git)",
+    "noCommitsYet": "(aucun commit pour le moment)",
+    "currentBranch": "branche actuelle"
+  },
+  "progression": {
+    "xp": "XP",
+    "xpEarned": "+{amount} XP",
+    "badges": "Badges",
+    "firstSteps": "Premiers pas",
+    "firstStepsDesc": "Terminez votre première quête"
+  }
+}
