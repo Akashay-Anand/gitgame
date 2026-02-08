@@ -14,7 +14,8 @@
     "play": "Jouer"
   },
   "play": {
-    "title": "GitQuest"
+    "title": "GitQuest",
+    "levelsButton": "Niveaux"
   },
   "levels": {
     "title": "Niveaux",
@@ -38,11 +39,16 @@
     "one": "git init",
     "two": "git add & commit",
     "three": "Branching",
+    "four": "Fusion",
     "starterCottage": "La cabane du débutant",
     "neonForest": "Stage & Commit",
-    "branching": "Chemins de branchement"
+    "branching": "Chemins de branchement",
+    "merge": "Quête de fusion"
   },
   "quest": {
+    "nextLevel": "Niveau suivant",
+    "viewLevels": "Voir les niveaux",
+    "continue": "Continuer",
     "level1": {
       "title": "Quête 1 : premier dépôt",
       "subtitle": "Initialisez un dépôt",
@@ -54,6 +60,61 @@
       "welcome": "Bienvenue ! Votre première tâche consiste à créer un nouveau dépôt Git. Exécutez git init pour en initialiser un dans ce dossier.",
       "success": "Bravo ! Vous avez initialisé un dépôt. Git a créé un dossier .git et configuré la branche par défaut \"main\". Quête terminée !",
       "already": "Ce dossier est déjà un dépôt Git. Vous avez terminé cette quête !"
+    },
+    "level2": {
+      "title": "Quête 2 : indexer et commiter",
+      "subtitle": "Indexer des fichiers et créer un commit",
+      "hint": "Utilisez git add pour indexer les fichiers, puis git commit avec un message.",
+      "objectiveStage": "Indexer vos modifications",
+      "objectiveCommit": "Créer un commit",
+      "buttonStage": "Indexer",
+      "buttonUnstage": "Désindexer",
+      "commitPlaceholder": "Message du commit…",
+      "buttonCommit": "Commiter",
+      "questComplete": "Quête terminée",
+      "welcome": "Il est temps de sauvegarder votre travail ! Indexez le fichier modifié, puis commitez avec un message.",
+      "staged": "Fichier indexé. Maintenant, saisissez un message de commit et cliquez sur Commiter.",
+      "success": "Commit créé ! Vos modifications sont maintenant dans l'historique du dépôt."
+    },
+    "level3": {
+      "title": "Quête 3 : branche Git",
+      "subtitle": "Créer et basculer entre les branches",
+      "hint": "Les branches vous permettent de travailler sur différentes lignes de développement. Créez une nouvelle branche, puis basculez dessus.",
+      "objectiveCreate": "Créer une nouvelle branche",
+      "objectiveSwitch": "Basculer vers la nouvelle branche",
+      "buttonCreateBranch": "Créer une branche",
+      "createPlaceholder": "Nom de la branche…",
+      "branchListLabel": "Branches",
+      "questComplete": "Quête terminée",
+      "welcome": "Les branches vous permettent d'essayer des idées sans affecter la ligne principale. Créez une nouvelle branche, puis basculez dessus.",
+      "branchCreated": "Branche \"{name}\" créée. Maintenant, basculez dessus pour y travailler.",
+      "switchedBranch": "Basculé sur la branche \"{name}\".",
+      "success": "Vous avez créé une branche et basculé dessus. Quête terminée !",
+      "errorDuplicateBranch": "Une branche nommée \"{name}\" existe déjà."
+    },
+    "level4": {
+      "title": "Quête 4 : fusion Git",
+      "subtitle": "Fusionner des branches et résoudre les conflits",
+      "hint": "La fusion intègre les modifications d'une branche dans une autre. Si le même fichier a été modifié dans les deux, vous devrez résoudre le conflit.",
+      "objectiveMerge": "Fusionner une branche (avec ou sans conflit)",
+      "buttonMerge": "Fusionner la branche",
+      "mergeSectionLabel": "Fusionner les branches",
+      "mergeInto": "Fusionner dans",
+      "fromBranch": "depuis",
+      "selectTarget": "Sélectionner la cible…",
+      "selectSource": "Sélectionner la source…",
+      "questComplete": "Quête terminée",
+      "welcome": "La fusion combine deux branches. Choisissez dans quelle branche fusionner (cible) et depuis quelle branche fusionner (source), puis cliquez sur Fusionner.",
+      "mergeInitiated": "Fusion de \"{source}\" dans \"{target}\".",
+      "mergeSuccess": "Fusion terminée ! Les branches sont combinées.",
+      "mergeResolved": "Conflit résolu. Fusion terminée !",
+      "conflictTitle": "Conflit de fusion",
+      "conflictExplanation": "Le même fichier a été modifié dans \"{source}\" et \"{target}\". Choisissez comment résoudre.",
+      "conflictDetected": "Conflit détecté. Choisissez \"Conserver la branche actuelle\" ou \"Utiliser les modifications entrantes\" pour résoudre.",
+      "keepCurrent": "Conserver la branche actuelle",
+      "useIncoming": "Utiliser les modifications entrantes",
+      "errorSameBranch": "La source et la cible doivent être des branches différentes.",
+      "errorNoCommits": "La branche \"{branch}\" n'a aucun commit à fusionner."
     }
   },
   "avatar": {
@@ -72,6 +133,9 @@
     "branches": "Branches",
     "commits": "Commits",
     "staged": "Indexé",
+    "workingDir": "Répertoire de travail",
+    "modified": "modifié",
+    "untracked": "non suivi",
     "notAGitRepo": "Pas un dépôt git (aucun répertoire .git)",
     "noCommitsYet": "(aucun commit pour le moment)",
     "currentBranch": "branche actuelle"

@@ -10,6 +10,7 @@ checksums:
     nav/home: 104a3db3b671c04e167eafbe21e57881
     nav/play: 027e225503c43b6e9cc9698e70c2736a
     play/title: de5ba54c66f0d3e5dc5d1fc64caac2e9
+    play/levelsButton: 6ebb315bb8a698031e93849b6f46bd11
     levels/title: 6ebb315bb8a698031e93849b6f46bd11
     levels/description: 190881ba7de9d787271ea4283e2f057e
     levels/levelUnavailable: 993baf7e55e9072d9a779635f0940b24
@@ -27,9 +28,14 @@ checksums:
     levelMap/one: 8197b6cf8fcfcf9d5d0a70326ed7dfbc
     levelMap/two: 76360e08d0f4fe5defbd508da65fd106
     levelMap/three: af38ef7708988f354b17247b76dd8d6a
+    levelMap/four: 95051c859b8778be51226b43be6f1075
     levelMap/starterCottage: 947347fdb6bea9b8629ef0241bd18944
     levelMap/neonForest: 584c85b2a2a9887611b23c1d81c69cdd
     levelMap/branching: 465fa5b5cdcb19a3d2d315728c1eaa48
+    levelMap/merge: 70a6c6e418c833b16ef3649b396797ff
+    quest/nextLevel: 57a6ff33fdbc07741a127683b252b229
+    quest/viewLevels: 60ab29a557b648344d942aa1718c5f80
+    quest/continue: 3cfba90b4600131e82fc4260c568d044
     quest/level1/title: 64b05837c884201010092004b52d69d3
     quest/level1/subtitle: 1fedeca9d24b2ff809f73a23c8c00285
     quest/level1/hint: 202c47400c851c35eb26b80864871d26
@@ -40,6 +46,55 @@ checksums:
     quest/level1/welcome: b503f667a4081655fb817922328fc0d6
     quest/level1/success: 5dada57cd68202e5ccac809461903e8d
     quest/level1/already: df97f2624ad1b8f7d4e9a4d332ba2481
+    quest/level2/title: 10c89d4b2ddbba20420778ceefc58803
+    quest/level2/subtitle: bc94e452f603f66d22e7f5f0e4d0b2fa
+    quest/level2/hint: e02a3868d96c24f7abce683dce687a60
+    quest/level2/objectiveStage: dd321ed40ec9f8c065a1fadd7203b465
+    quest/level2/objectiveCommit: 125b82ba01afbf96e3f2e4cea4d641a6
+    quest/level2/buttonStage: 791b091ce29b771e471bd0818fd63466
+    quest/level2/buttonUnstage: 59fcd9ce8ca2d54b890b1288f450520f
+    quest/level2/commitPlaceholder: cbe8219850c0c72f5b6ecb34675b3be4
+    quest/level2/buttonCommit: ee4c479853fec8884752b54fb61f77eb
+    quest/level2/questComplete: e953318f05bd8c18d5f70feaa8d7cee0
+    quest/level2/welcome: b42bdcd02c7c6dee9031bd65cb40a05d
+    quest/level2/staged: 9163b03590045cf95b89c93476f8d14c
+    quest/level2/success: b727547244f6ffa48412cf807d35ac45
+    quest/level3/title: d7c4752e0ada2f4e5a06788f756efae0
+    quest/level3/subtitle: cd9d12d7ecdbd418c2ad4d04500c0c9a
+    quest/level3/hint: 6a4046774c5b443307fb526f1f88226c
+    quest/level3/objectiveCreate: 1079ef0690a23f53aa69196abb0ebe8e
+    quest/level3/objectiveSwitch: 4ea5262be112ef8f1d2ff8c35b9e1339
+    quest/level3/buttonCreateBranch: bcfad37535b7a275b200d7dd52c999cf
+    quest/level3/createPlaceholder: 781d942aae5d450d4eeb99d0680e7bf1
+    quest/level3/branchListLabel: e2334b6f1d592812268ab1ccfc38fbe9
+    quest/level3/questComplete: e953318f05bd8c18d5f70feaa8d7cee0
+    quest/level3/welcome: 44b649882a378b7550d3d0a36d0180e2
+    quest/level3/branchCreated: 1059485df46117e314c4e14c9412f4aa
+    quest/level3/switchedBranch: c0a2f88b93635ab6ad0461a878524520
+    quest/level3/success: 8adef11144a6ec16e35b6c2774919fe6
+    quest/level3/errorDuplicateBranch: 6812b4a02b39c3883d29ab47c5d5db4e
+    quest/level4/title: 5c5756a9ffbbfb816cba42b758d5ec3b
+    quest/level4/subtitle: b0eee3ed20fa0fbe821889a6c0b4c993
+    quest/level4/hint: 9fb3072996600cd5e408babfee3ec743
+    quest/level4/objectiveMerge: aa2bb7c7cc2ae0915194beec3a9e53ee
+    quest/level4/buttonMerge: 02a2b3c0ea0159bec09ad3c683b3d954
+    quest/level4/mergeSectionLabel: c61c5d2dca40b7a591f1fb6408ced112
+    quest/level4/mergeInto: b1be090a2963d69d364cbbb01385c420
+    quest/level4/fromBranch: a8237e4c3b5f2de9b0948d464e767813
+    quest/level4/selectTarget: 972ecd7b834f265048172662b30288ef
+    quest/level4/selectSource: d7608848a20acd12bc491de8a978d2a8
+    quest/level4/questComplete: e953318f05bd8c18d5f70feaa8d7cee0
+    quest/level4/welcome: 5a605107784fa590341b5f6af7fa274b
+    quest/level4/mergeInitiated: bbc4f0433e0fe86ae53945c77fe787d7
+    quest/level4/mergeSuccess: 6a8704ad6efc2b10802ac1d61220a768
+    quest/level4/mergeResolved: 6dfa2dda10c4b551719285d2645e31f4
+    quest/level4/conflictTitle: 4feceefb23a6b821648fc891e79b83b3
+    quest/level4/conflictExplanation: 06ca775cc0361a49e88e80253ecaff54
+    quest/level4/conflictDetected: a1114bdc52840dc68ea153c0d11764a3
+    quest/level4/keepCurrent: add8a5cbb3337c27ce939efea0f8313e
+    quest/level4/useIncoming: c5273dbdb4c71f621bfb34e4510227ae
+    quest/level4/errorSameBranch: 8034c87d922d683ba1d7049984e3a0a6
+    quest/level4/errorNoCommits: 3994fd6aa90797f5483f3f66359fafef
     avatar/title: 97e1dfa514a28d922e66dce491805f31
     avatar/waiting: 73c795da738e50254d7b63e676c65c5e
     avatar/mood/idle: ff1e82d85365f22233d061305dc2aaba
@@ -51,6 +106,9 @@ checksums:
     repo/branches: e2334b6f1d592812268ab1ccfc38fbe9
     repo/commits: 03bc9a147a2b0059e80dfb1287458555
     repo/staged: 32fdbeda3f1066b675eff48b7bb48fd4
+    repo/workingDir: 3e97f8d897eb5e1de1f2dc84146efeb2
+    repo/modified: df9a2b0584f6897b0e0f2ca40ffd4234
+    repo/untracked: 5889aa204eb926b917ae3b7145597bb8
     repo/notAGitRepo: a647ba97b15ef14c7b14bf59defe8899
     repo/noCommitsYet: 83d5dc8cf14e6d2604354a16b0d09000
     repo/currentBranch: fd82ddff24a0dd36c502dfcd6f971423
