@@ -3,6 +3,10 @@
 ## Deployed link
 - [magnificent-banoffee-587dc2.netlify.app  ](https://magnificent-banoffee-587dc2.netlify.app/levels) 
 
+
+<img width="1919" height="966" alt="image" src="https://github.com/user-attachments/assets/32f0cf67-517c-46f7-98a0-c3ac2a6cd130" />
+
+
 A frontend-only **web-based Git learning game** built with React, Next.js, and TypeScript.
 
 ## Stack
