@@ -6,6 +6,7 @@ import { useGameStore } from "@/store/gameStore";
 import { useT } from "@/lib/copy";
 import { XP_TARGET, isLevelUnlocked, getCurrentLocationKey } from "@/lib/levels";
 import { LanguageSwitch } from "@/components/LanguageSwitch";
+import { MusicToggle } from "@/components/MusicToggle";
 import { LevelNode } from "@/components/levels";
 
 export default function LevelsPage() {
@@ -52,13 +53,14 @@ export default function LevelsPage() {
           </div>
         </div>
         <div className="flex items-center gap-4 pointer-events-auto">
+          <MusicToggle variant="dark" />
           <LanguageSwitch />
-          <div className="flex items-center gap-2 bg-background-dark/80 backdrop-blur-md px-3 py-2 rounded-xl border border-white/10">
+          {/* <div className="flex items-center gap-2 bg-background-dark/80 backdrop-blur-md px-3 py-2 rounded-xl border border-white/10">
             <span className="material-symbols-outlined text-yellow-400 text-2xl">
               local_fire_department
             </span>
             <span className="font-bold tabular-nums">{badges.length}</span>
-          </div>
+          </div> */}
         </div>
       </header>
 
@@ -95,25 +97,39 @@ export default function LevelsPage() {
             completed={completedLevels["2"]}
             isCurrent={currentLevel === "2"}
             onSelect={() => setLevel("2")}
-            className="relative z-10 ml-64 sm:ml-80 md:ml-96 -mt-24 sm:-mt-32"
+            className="relative z-10 ml-64 sm:ml-80 md:ml-96 mt-8 sm:mt-12"
           />
 
           <div
-            className="absolute top-[42%] left-[68%] w-[14%] h-[2px] circuit-line-locked -rotate-[25deg] hidden sm:block"
-            aria-hidden
-          />
-          <div
-            className="absolute top-[58%] left-[68%] w-[14%] h-[2px] circuit-line-locked rotate-[25deg] hidden sm:block"
+            className={`absolute top-[42%] left-[68%] w-[14%] h-[2px] -rotate-[25deg] hidden sm:block ${
+              isLevelUnlocked("3", completedLevels) ? "circuit-line" : "circuit-line-locked"
+            }`}
             aria-hidden
           />
           <LevelNode
             levelId="3"
             labelKey="levelMap.three"
-            unlocked={false}
-            completed={false}
-            isCurrent={false}
-            onSelect={() => {}}
-            className="relative z-10 ml-auto mr-[15%]"
+            unlocked={isLevelUnlocked("3", completedLevels)}
+            completed={completedLevels["3"]}
+            isCurrent={currentLevel === "3"}
+            onSelect={() => setLevel("3")}
+            className="relative z-10 ml-64 sm:ml-80 md:ml-96 mt-8 sm:mt-12"
+          />
+
+          <div
+            className={`absolute top-[58%] left-[68%] w-[14%] h-[2px] rotate-[25deg] hidden sm:block ${
+              isLevelUnlocked("4", completedLevels) ? "circuit-line" : "circuit-line-locked"
+            }`}
+            aria-hidden
+          />
+          <LevelNode
+            levelId="4"
+            labelKey="levelMap.four"
+            unlocked={isLevelUnlocked("4", completedLevels)}
+            completed={completedLevels["4"]}
+            isCurrent={currentLevel === "4"}
+            onSelect={() => setLevel("4")}
+            className="relative z-10 ml-64 sm:ml-80 md:ml-96 mt-24 sm:mt-32"
           />
         </div>
       </main>

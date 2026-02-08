@@ -1,5 +1,8 @@
 # GitQuest
 
+## Deployed link
+- magnificent-banoffee-587dc2.netlify.app 
+
 A frontend-only **web-based Git learning game** built with React, Next.js, and TypeScript.
 
 ## Stack
@@ -61,3 +64,4 @@ After that, merging any feature PR (or any change) to `main` will trigger the wo
 1. Implement **Level 1** gameplay in `src/app/play/page.tsx` and/or `src/components/levels/`.
 2. Add a language switcher and wire it to `getLocale()` (e.g. cookie or URL) so users can switch to Hindi.
 3. Add more levels and route them from the levels page.
+

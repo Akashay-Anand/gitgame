@@ -1,16 +1,38 @@
 "use client";
 
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useT } from "@/lib/copy";
+import { useGameStore } from "@/store/gameStore";
 
 interface QuestCompleteOverlayProps {
   show: boolean;
   xpEarned: number;
   onDismiss?: () => void;
+  /** When set, show "Next level" button that switches to this level and dismisses. */
+  nextLevelId?: string;
+  /** When true (e.g. level 4), show "View levels" instead of "Next level". */
+  isLastLevel?: boolean;
+  /** i18n key for the completion title (default: quest.level1.questComplete). */
+  titleKey?: string;
 }
 
-export function QuestCompleteOverlay({ show, xpEarned, onDismiss }: QuestCompleteOverlayProps) {
+export function QuestCompleteOverlay({
+  show,
+  xpEarned,
+  onDismiss,
+  nextLevelId,
+  isLastLevel,
+  titleKey = "quest.level1.questComplete",
+}: QuestCompleteOverlayProps) {
   const t = useT();
+  const setLevel = useGameStore((s) => s.setLevel);
+
+  const handleNextLevel = () => {
+    if (nextLevelId) setLevel(nextLevelId);
+    onDismiss?.();
+  };
+
   return (
     <AnimatePresence>
       {show && (
@@ -38,7 +60,7 @@ export function QuestCompleteOverlay({ show, xpEarned, onDismiss }: QuestComplet
               🏆
             </motion.div>
             <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-1">
-              {t("quest.level1.questComplete")}
+              {t(titleKey)}
             </h2>
             <motion.p
               initial={{ opacity: 0, y: 4 }}
@@ -49,16 +71,53 @@ export function QuestCompleteOverlay({ show, xpEarned, onDismiss }: QuestComplet
               {t("progression.xpEarned", { amount: String(xpEarned) })}
             </motion.p>
             {onDismiss && (
-              <motion.button
-                type="button"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                onClick={onDismiss}
-                className="px-5 py-2.5 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium hover:opacity-90"
-              >
-                Continue
-              </motion.button>
+              <div className="flex flex-col sm:flex-row gap-2 justify-center items-center">
+                {nextLevelId && (
+                  <motion.button
+                    type="button"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    onClick={handleNextLevel}
+                    className="px-5 py-2.5 rounded-lg bg-primary text-white font-medium hover:opacity-90"
+                  >
+                    {t("quest.nextLevel")}
+                  </motion.button>
+                )}
+                {isLastLevel && (
+                  <Link
+                    href="/levels"
+                    onClick={onDismiss}
+                    className="px-5 py-2.5 rounded-lg bg-primary text-white font-medium hover:opacity-90 text-center"
+                  >
+                    {t("quest.viewLevels")}
+                  </Link>
+                )}
+                {(!nextLevelId && !isLastLevel) && (
+                  <motion.button
+                    type="button"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    onClick={onDismiss}
+                    className="px-5 py-2.5 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium hover:opacity-90"
+                  >
+                    {t("quest.continue")}
+                  </motion.button>
+                )}
+                {(nextLevelId || isLastLevel) && (
+                  <motion.button
+                    type="button"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.3 }}
+                    onClick={onDismiss}
+                    className="px-5 py-2.5 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 font-medium hover:opacity-90"
+                  >
+                    {t("quest.continue")}
+                  </motion.button>
+                )}
+              </div>
             )}
           </motion.div>
         </motion.div>

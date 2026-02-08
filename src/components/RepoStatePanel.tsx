@@ -11,7 +11,9 @@ export function RepoStatePanel() {
   const initialized = repository.initialized ?? false;
   const branches = repository.branches ?? [];
   const workingDirectory = repository.workingDirectory ?? [];
-  const commits = repository.commits ?? [];
+  const currentBranch = repository.currentBranch ?? branches.find((b) => b.isHead)?.name ?? "main";
+  const commits =
+    repository.branchCommits?.[currentBranch] ?? repository.commits ?? [];
   const stagedFiles = repository.stagedFiles ?? [];
 
   return (

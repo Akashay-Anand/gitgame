@@ -4,7 +4,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { useGameStore } from "@/store/gameStore";
 import { useT } from "@/lib/copy";
-import { Level1, Level2StageAndCommit, LevelUnavailable } from "@/components/levels";
+import { LanguageSwitch } from "@/components/LanguageSwitch";
+import { MusicToggle } from "@/components/MusicToggle";
+import { Level1, Level2StageAndCommit, Level3Branch, Level4Merge, LevelUnavailable } from "@/components/levels";
 
 function PlayContent() {
   const currentLevel = useGameStore((s) => s.currentLevel);
@@ -14,6 +16,10 @@ function PlayContent() {
       return <Level1 />;
     case "2":
       return <Level2StageAndCommit />;
+    case "3":
+      return <Level3Branch />;
+    case "4":
+      return <Level4Merge />;
     default:
       return <LevelUnavailable levelId={currentLevel} />;
   }
@@ -45,12 +51,16 @@ export default function PlayPage() {
               )}
             </p>
           </div>
-          <Link
-            href="/"
-            className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
-          >
-            {t("nav.back")}
-          </Link>
+          <div className="flex items-center gap-3">
+            <MusicToggle variant="light" />
+            <LanguageSwitch variant="light" />
+            <Link
+              href="/levels"
+              className="text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-medium"
+            >
+              {t("play.levelsButton")}
+            </Link>
+          </div>
         </div>
 
         <PlayContent />

@@ -116,6 +116,8 @@ export function Level1() {
         show={showQuestCompleteOverlay}
         xpEarned={XP_PER_QUEST}
         onDismiss={() => setShowQuestCompleteOverlay(false)}
+        nextLevelId="2"
+        titleKey="quest.level1.questComplete"
       />
     </>
   );
