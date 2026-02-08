@@ -17,6 +17,8 @@ interface QuestPanelProps {
   allComplete: boolean;
   /** When true, show celebration state */
   showComplete?: boolean;
+  /** i18n key for "Quest complete" (default: quest.level1.questComplete) */
+  questCompleteKey?: string;
 }
 
 export function QuestPanel({
@@ -26,6 +28,7 @@ export function QuestPanel({
   objectives,
   allComplete,
   showComplete = false,
+  questCompleteKey = "quest.level1.questComplete",
 }: QuestPanelProps) {
   const t = useT();
   return (
@@ -47,7 +50,7 @@ export function QuestPanel({
               animate={{ scale: 1, opacity: 1 }}
               className="text-xs font-medium text-green-600 dark:text-green-400"
             >
-              ✓ {t("quest.level1.questComplete")}
+              ✓ {t(questCompleteKey)}
             </motion.span>
           )}
         </div>

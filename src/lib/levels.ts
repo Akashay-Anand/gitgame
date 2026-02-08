@@ -1,11 +1,12 @@
 /** Level / progression constants shared across levels page and game logic. */
-export const XP_TARGET = 1000;
+export const XP_TARGET = 400;
 
 /** i18n key for current location label by level id (levelMap.*). */
 export const LEVEL_LOCATION_KEYS: Record<string, string> = {
   "1": "levelMap.starterCottage",
   "2": "levelMap.neonForest",
   "3": "levelMap.branching",
+  "4": "levelMap.merge",
 };
 
 export function isLevelUnlocked(

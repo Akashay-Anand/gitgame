@@ -127,6 +127,7 @@ export function Level2StageAndCommit() {
               objectives={objectives}
               allComplete={allComplete}
               showComplete={questJustCompleted}
+              questCompleteKey="quest.level2.questComplete"
             />
           </div>
           <div className="lg:col-span-3 space-y-6">
@@ -202,6 +203,8 @@ export function Level2StageAndCommit() {
         show={showQuestCompleteOverlay}
         xpEarned={XP_PER_QUEST}
         onDismiss={() => setShowQuestCompleteOverlay(false)}
+        nextLevelId="3"
+        titleKey="quest.level2.questComplete"
       />
     </>
   );

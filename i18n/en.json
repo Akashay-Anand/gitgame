@@ -14,7 +14,8 @@
     "play": "Play"
   },
   "play": {
-    "title": "GitQuest"
+    "title": "GitQuest",
+    "levelsButton": "Levels"
   },
   "levels": {
     "title": "Levels",
@@ -38,11 +39,16 @@
     "one": "git init",
     "two": "git add & commit",
     "three": "Branching",
+    "four": "Merge",
     "starterCottage": "The Starter Cottage",
     "neonForest": "Stage & Commit",
-    "branching": "Branching Paths"
+    "branching": "Branching Paths",
+    "merge": "Merge Quest"
   },
   "quest": {
+    "nextLevel": "Next level",
+    "viewLevels": "View levels",
+    "continue": "Continue",
     "level1": {
       "title": "Quest 1: First Repository",
       "subtitle": "Initialize a repository",
@@ -54,6 +60,61 @@
       "welcome": "Welcome! Your first task is to create a new Git repository. Run git init to initialize one in this folder.",
       "success": "Nice! You've initialized a repository. Git created a .git folder and set up the default branch \"main\". Quest complete!",
       "already": "This folder is already a Git repository. You've completed this quest!"
+    },
+    "level2": {
+      "title": "Quest 2: Stage & Commit",
+      "subtitle": "Stage files and create a commit",
+      "hint": "Use git add to stage files, then git commit with a message.",
+      "objectiveStage": "Stage your changes",
+      "objectiveCommit": "Create a commit",
+      "buttonStage": "Stage",
+      "buttonUnstage": "Unstage",
+      "commitPlaceholder": "Commit message…",
+      "buttonCommit": "Commit",
+      "questComplete": "Quest complete",
+      "welcome": "Time to save your work! Stage the modified file, then commit with a message.",
+      "staged": "File staged. Now enter a commit message and click Commit.",
+      "success": "Commit created! Your changes are now in the repository history."
+    },
+    "level3": {
+      "title": "Quest 3: Git Branch",
+      "subtitle": "Create and switch branches",
+      "hint": "Branches let you work on different lines of development. Create a new branch, then switch to it.",
+      "objectiveCreate": "Create a new branch",
+      "objectiveSwitch": "Switch to the new branch",
+      "buttonCreateBranch": "Create Branch",
+      "createPlaceholder": "Branch name…",
+      "branchListLabel": "Branches",
+      "questComplete": "Quest complete",
+      "welcome": "Branches let you try out ideas without affecting the main line. Create a new branch, then switch to it.",
+      "branchCreated": "Branch \"{name}\" created. Now switch to it to work there.",
+      "switchedBranch": "Switched to branch \"{name}\".",
+      "success": "You created a branch and switched to it. Quest complete!",
+      "errorDuplicateBranch": "A branch named \"{name}\" already exists."
+    },
+    "level4": {
+      "title": "Quest 4: Git Merge",
+      "subtitle": "Merge branches and resolve conflicts",
+      "hint": "Merge brings changes from one branch into another. If the same file was changed in both, you'll need to resolve the conflict.",
+      "objectiveMerge": "Merge a branch (with or without conflict)",
+      "buttonMerge": "Merge Branch",
+      "mergeSectionLabel": "Merge branches",
+      "mergeInto": "Merge into",
+      "fromBranch": "from",
+      "selectTarget": "Select target…",
+      "selectSource": "Select source…",
+      "questComplete": "Quest complete",
+      "welcome": "Merging combines two branches. Choose which branch to merge into (target) and which to merge from (source), then click Merge.",
+      "mergeInitiated": "Merging \"{source}\" into \"{target}\".",
+      "mergeSuccess": "Merge complete! The branches are combined.",
+      "mergeResolved": "Conflict resolved. Merge complete!",
+      "conflictTitle": "Merge conflict",
+      "conflictExplanation": "The same file was changed in both \"{source}\" and \"{target}\". Choose how to resolve.",
+      "conflictDetected": "Conflict detected. Choose \"Keep current branch\" or \"Use incoming changes\" to resolve.",
+      "keepCurrent": "Keep current branch",
+      "useIncoming": "Use incoming changes",
+      "errorSameBranch": "Source and target must be different branches.",
+      "errorNoCommits": "Branch \"{branch}\" has no commits to merge."
     }
   },
   "avatar": {
@@ -72,6 +133,9 @@
     "branches": "Branches",
     "commits": "Commits",
     "staged": "Staged",
+    "workingDir": "Working directory",
+    "modified": "modified",
+    "untracked": "untracked",
     "notAGitRepo": "Not a git repository (no .git directory)",
     "noCommitsYet": "(no commits yet)",
     "currentBranch": "current branch"

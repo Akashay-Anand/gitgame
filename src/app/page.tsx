@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useT } from "@/lib/copy";
 import { useGameStore } from "@/store/gameStore";
+import { MusicToggle } from "@/components/MusicToggle";
 
 export default function HomePage() {
   const t = useT();
@@ -11,7 +12,10 @@ export default function HomePage() {
   const badges = useGameStore((s) => s.badges);
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-8 bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800">
+    <main className="min-h-screen flex flex-col items-center justify-center p-8 bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 relative">
+      <div className="absolute top-6 right-6 flex items-center gap-2">
+        <MusicToggle variant="light" />
+      </div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
