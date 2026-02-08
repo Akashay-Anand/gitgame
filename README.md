@@ -1,7 +1,7 @@
 # GitQuest
 
 ## Deployed link
-- magnificent-banoffee-587dc2.netlify.app 
+- [magnificent-banoffee-587dc2.netlify.app  ](https://magnificent-banoffee-587dc2.netlify.app/levels) 
 
 A frontend-only **web-based Git learning game** built with React, Next.js, and TypeScript.
 
